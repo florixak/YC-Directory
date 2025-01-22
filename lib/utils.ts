@@ -16,3 +16,7 @@ export function formatDate(date: string) {
 export function formatNumberWithText(num: number, text: string) {
   return `${num} ${text}${num === 1 ? "" : "s"}`;
 }
+
+export function parseServerActionResponse<T>(response: T) {
+  return JSON.parse(JSON.stringify(response));
+}
