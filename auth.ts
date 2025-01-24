@@ -1,11 +1,18 @@
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import { AUTHOR_BY_GITHUB_ID_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { writeClient } from "@/sanity/lib/write-client";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  providers: [GitHub],
+  providers: [
+    GitHub,
+    GoogleProvider({
+      clientId: process.env.AUTH_GOOGLE_ID as string,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
+    }),
+  ],
   callbacks: {
     async signIn({
       user: { name, email, image },
