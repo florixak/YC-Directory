@@ -14,13 +14,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID as string,
       clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
-      authorization: {
-        params: {
-          prompt: "consent",
           access_type: "offline",
-          response_type: "code",
-        },
-      },
+      // authorization: {
+      //   params: {
+      //     prompt: "consent",
+      //     access_type: "offline",
+      //     response_type: "code",
+      //   },
+      // },
     }),
   ],
   callbacks: {
