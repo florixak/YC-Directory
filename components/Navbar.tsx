@@ -4,6 +4,7 @@ import React from "react";
 import { auth, signOut, signIn } from "@/auth";
 import { BadgePlus, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { redirect } from "next/navigation";
 
 const Navbar = async () => {
   const session = await auth();
@@ -49,7 +50,7 @@ const Navbar = async () => {
             <form
               action={async () => {
                 "use server";
-                await signIn("google");
+                redirect("/login");
               }}
             >
               <button type="submit">Login</button>
