@@ -12,7 +12,12 @@ Sentry.init({
     Sentry.replayIntegration(),
     Sentry.feedbackIntegration({
       // Additional SDK configuration goes in here, for example:
-      colorScheme: "system",
+      colorScheme: "light",
+      themeLight: {
+        foreground: "#ee2b69",
+        color: "#000",
+        accentBackground: "#ee2b69",
+      },
     }),
   ],
 
