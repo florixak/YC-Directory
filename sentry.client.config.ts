@@ -14,7 +14,7 @@ Sentry.init({
       // Additional SDK configuration goes in here, for example:
       colorScheme: "light",
       themeLight: {
-        foreground: "#ee2b69",
+        foreground: "#000",
         color: "#000",
         accentBackground: "#ee2b69",
       },
