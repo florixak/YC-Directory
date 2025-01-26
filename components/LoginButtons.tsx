@@ -1,8 +1,6 @@
-import React from "react";
 import { Button } from "./ui/button";
 import { signIn } from "@/auth";
 import { GitHubLogoIcon, GlobeIcon } from "@radix-ui/react-icons";
-import { LogIn } from "lucide-react";
 
 const LoginButtons = () => {
   const loginWithGitHub = async () => {
