@@ -21,8 +21,8 @@ const RegisterForm = () => {
 
       await registerFormSchema.parseAsync(formValues);
 
-      if (formValues.password !== formValues.confirmPassword)
-        return { ...prevState, status: "PASSWORD_NOT_MATCH" };
+      // if (formValues.password !== formValues.confirmPassword)
+      //   return { ...prevState, status: "PASSWORD_NOT_MATCH" };
 
       toast({
         title: "Success",
@@ -88,9 +88,8 @@ const RegisterForm = () => {
           placeholder="Password"
           required
         />
-        {errors.password && <p className="text-red-500">{errors.password}</p>}
-        {state.status === "PASSWORD_NOT_MATCH" && (
-          <p className="text-red-500">Passwords do not match</p>
+        {errors.password && (
+          <p className="text-red-500 text-sm">{errors.password}</p>
         )}
       </div>
 
@@ -103,10 +102,7 @@ const RegisterForm = () => {
           required
         />
         {errors.confirmPassword && (
-          <p className="text-red-500">{errors.confirmPassword}</p>
-        )}
-        {state.status === "PASSWORD_NOT_MATCH" && (
-          <p className="text-red-500">Passwords do not match</p>
+          <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
         )}
       </div>
 
