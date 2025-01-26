@@ -1,13 +1,32 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const LoginForm = () => {
+  const { toast } = useToast();
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
   const handleFormSubmit = async (prevState: any, formData: FormData) => {
-    console.log(formData.get("login"), formData.get("password"));
-    return { ...prevState, status: "SUCCESS" };
+    try {
+      toast({
+        title: "Success",
+        description: "Successfully logged in",
+      });
+      router.push(`/`);
+      return { ...prevState, status: "SUCCESS" };
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to log in",
+        variant: "destructive",
+      });
+      return { ...prevState, status: "ERROR" };
+    }
   };
 
   const [state, formAction, isPending] = useActionState(handleFormSubmit, {
@@ -34,6 +53,13 @@ const LoginForm = () => {
         placeholder="Password"
         required
       />
+      {error && <p className="text-red-500">{error}</p>}
+      <p className="text-center text-sm">
+        Not registered?{" "}
+        <Link href="/register" className="text-primary hover:text-primary/70">
+          Register here.
+        </Link>{" "}
+      </p>
       <Button
         type="submit"
         className="btn btn-primary py-5 text-white"
