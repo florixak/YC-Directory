@@ -14,7 +14,7 @@ const LoginButtons = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-[20rem] mx-auto mt-10 text-white">
+    <div className="flex flex-col gap-4 w-[20rem] mx-auto text-white">
       <Button onClick={loginWithGitHub} className="btn btn-primary py-5">
         <GitHubLogoIcon />
         Login with GitHub
