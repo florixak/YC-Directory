@@ -16,6 +16,9 @@ const Page = async () => {
         <h1 className="heading">Login</h1>
       </section>
       <LoginForm />
+      <div className="bg-primary/100 w-[20rem] h-[2px] mx-auto mt-5 mb-7 text-center text-sm rounded-md">
+        Or use these
+      </div>
       <LoginButtons />
     </>
   );
