@@ -6,10 +6,11 @@ import { Input } from "./ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { set } from "sanity";
 
 const LoginForm = () => {
   const { toast } = useToast();
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string>("");
   const router = useRouter();
   const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
@@ -17,7 +18,7 @@ const LoginForm = () => {
         title: "Success",
         description: "Successfully logged in",
       });
-      router.push(`/`);
+      router.push("/");
       return { ...prevState, status: "SUCCESS" };
     } catch (error) {
       toast({
@@ -25,6 +26,7 @@ const LoginForm = () => {
         description: "Failed to log in",
         variant: "destructive",
       });
+      setError("Failed to log in");
       return { ...prevState, status: "ERROR" };
     }
   };
